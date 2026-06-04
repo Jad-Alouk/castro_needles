@@ -40,7 +40,7 @@ export const ProductForm = (
 
     return (
         <>
-            <FieldSet className="w-2/3">
+            <FieldSet className="w-full max-w-2xl">
                 <FieldGroup>
                     <Field>
                         <FieldLabel htmlFor="name">Name</FieldLabel>
@@ -97,7 +97,7 @@ export const ProductForm = (
                         />
                     </Field>
                     <Select name="category" defaultValue={preLoadedData?.categoryID}>
-                        <SelectTrigger className="w-full max-w-48">
+                        <SelectTrigger className="w-full">
                             <SelectValue placeholder="Category" />
                         </SelectTrigger>
                         <SelectContent>
@@ -115,7 +115,7 @@ export const ProductForm = (
                         </SelectContent>
                     </Select>
                     <Select name="domain" defaultValue={preLoadedData?.domainID}>
-                        <SelectTrigger className="w-full max-w-48">
+                        <SelectTrigger className="w-full">
                             <SelectValue placeholder="Domain" />
                         </SelectTrigger>
                         <SelectContent>
@@ -133,7 +133,7 @@ export const ProductForm = (
                         </SelectContent>
                     </Select>
                     <Select name="type" defaultValue={preLoadedData?.typeID}>
-                        <SelectTrigger className="w-full max-w-48">
+                        <SelectTrigger className="w-full">
                             <SelectValue placeholder="Type" />
                         </SelectTrigger>
                         <SelectContent>
@@ -169,8 +169,8 @@ export const ProductForm = (
                     </div>
                 </FieldGroup>
             </FieldSet>
-            <div className="w-full my-5 flex justify-evenly items-center">
-                <Button type="submit">{preLoadedData ? "Update" : "Create"}</Button>
+            <div className="my-5 flex w-full justify-center">
+                <Button type="submit" className="w-full sm:w-auto">{preLoadedData ? "Update" : "Create"}</Button>
             </div>
         </>
     )

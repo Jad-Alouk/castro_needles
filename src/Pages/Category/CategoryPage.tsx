@@ -26,20 +26,20 @@ export const CategoryPage = () => {
     }, [searchQuery])
 
     return (
-        <section className="w-full flex flex-col justify-center items-center">
+        <section className="mx-auto flex w-full max-w-7xl flex-col items-center gap-6 px-4 py-6 sm:px-6">
 
-            <div className="w-1/2 mb-5 flex justify-start items-center">
+            <div className="flex w-full items-center gap-4">
                 <Image
                     src={data?.category.imageUrl}
                     alt={data?.category.slug}
-                    size={"sm"} custom=""
+                    size={"sm"} custom="shrink-0 border-2 rounded-md"
                 />
-                <h1 className="text-2xl">{data?.category.name}</h1>
+                <h1 className="text-xl font-semibold sm:text-2xl">{data?.category.name}</h1>
             </div>
 
             <FilterOpts opts={userFilters} setter={setUserFilters} />
 
-            <div className="w-1/2 flex justify-between items-center flex-wrap">
+            <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 justify-items-center">
                 {
                     data?.products.map(p => {
                         if (!userFilters.length) {

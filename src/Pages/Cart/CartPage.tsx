@@ -35,7 +35,7 @@ export const CartPage = () => {
     }
 
     return (
-        <div className="w-full flex flex-col justify-center items-center">
+        <div className="mx-auto flex w-full max-w-2xl flex-col items-center gap-4 px-4 py-6 sm:px-6">
 
             {storedData.map(p => (
                 <ProductItem
@@ -49,7 +49,7 @@ export const CartPage = () => {
             ))}
 
             <div
-                className="w-full max-w-2xl flex justify-between items-center border-t pt-4 my-5 font-bold text-xl"
+                className="flex w-full items-center justify-between border-t pt-4 font-bold text-lg sm:text-xl"
             >
                 <span>Total:</span>
                 <span>${totalPrice.toFixed(2)}</span>

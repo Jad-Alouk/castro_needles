@@ -4,10 +4,10 @@ import { BRAND } from "@/constants"
 
 export const AboutPage = () => {
     return (
-        <main className="mx-auto max-w-3xl px-4 py-8">
+        <main className="mx-auto max-w-3xl px-4 py-6 sm:px-6 sm:py-8">
             <Card>
                 <CardHeader>
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
                         {BRAND.logo && (
                             <img src={BRAND.logo} alt={`${BRAND.name} logo`} className="h-12 w-12 object-contain" />
                         )}

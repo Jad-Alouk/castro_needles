@@ -8,7 +8,7 @@ export const HomePage = () => {
     const ftProds = useQuery(api.product.getFeatured, {})
 
     return (
-        <div className="w-full flex flex-col justify-center items-center">
+        <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 px-4 py-6 sm:px-6">
 
             {
                 ftProds?.map(

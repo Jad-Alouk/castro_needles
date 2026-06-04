@@ -8,11 +8,13 @@ export const FilterOpts = (
 ) => {
 
     return (
-        <div className="m-10">
+        <div className="w-full py-2">
 
             <ToggleGroup
                 type="multiple"
-                size={"lg"} spacing={2}
+                size="default"
+                spacing={2}
+                className="flex w-full flex-wrap justify-center gap-2"
                 value={opts}
                 onValueChange={v => setter(v)}
             >

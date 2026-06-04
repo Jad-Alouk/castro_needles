@@ -20,26 +20,26 @@ export const ProductItem = ({ product }: { product: Partial<Product> }) => {
     const nukeProd = useMutation(api.product.deleteProductByID)
 
     return (
-        <div className="flex w-full my-3 max-w-md flex-col gap-6">
-            <Item variant="outline">
-                <ItemMedia variant={"image"}>
+        <div className="my-3 flex w-full flex-col gap-6">
+            <Item variant="outline" className="flex-wrap gap-3">
+                <ItemMedia variant={"image"} className="size-16 shrink-0 sm:size-10">
                     <img
                         src={product.imageUrl ?? placeholder}
                         alt={`${product.sku ?? "product"}-img`}
                     />
                 </ItemMedia>
-                <ItemContent>
+                <ItemContent className="min-w-0 flex-1">
                     <Link to={`/admin/p/${product._id}`}>
-                        <ItemTitle>{product.name}</ItemTitle>
+                        <ItemTitle className="whitespace-normal">{product.name}</ItemTitle>
                         <ItemDescription className="flex flex-col">
-                            <span className="flex items-center gap-3">
+                            <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
                                 <span>Stock: {product.quantity}</span>
                                 <span>Price: {product.price}</span>
                             </span>
                         </ItemDescription>
                     </Link>
                 </ItemContent>
-                <ItemActions>
+                <ItemActions className="w-full shrink-0 sm:w-auto sm:ml-auto">
                     <ConfirmBtn
                         action={async () => await nukeProd({ productID: product._id! })}
                         actionName="Delete"

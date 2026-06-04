@@ -82,7 +82,7 @@ export const EditorPage = () => {
     return (
         <form
             onSubmit={handleSubmit}
-            className="my-5 flex flex-col justify-center items-center"
+            className="mx-auto my-5 flex w-full max-w-3xl flex-col items-center px-4 sm:px-6"
         >
             {
                 product === undefined

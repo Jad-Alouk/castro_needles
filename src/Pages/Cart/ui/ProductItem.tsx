@@ -25,18 +25,18 @@ export const ProductItem = (
 
 
     return (
-        <div className="flex w-full my-3 max-w-md flex-col gap-6">
-            <Item variant="outline">
-                <ItemMedia variant={"image"}>
+        <div className="my-3 flex w-full flex-col gap-6">
+            <Item variant="outline" className="flex-wrap gap-3">
+                <ItemMedia variant={"image"} className="size-16 shrink-0 sm:size-10">
                     <img
                         src={product?.imageUrl ?? placeholder}
                         alt={`${product?.sku ?? "product"}-img`}
                     />
                 </ItemMedia>
-                <ItemContent>
-                    <ItemTitle>{product.name}</ItemTitle>
-                    <ItemDescription className="flex flex-col">
-                        <span className="flex items-center gap-3">
+                <ItemContent className="min-w-0 flex-1">
+                    <ItemTitle className="whitespace-normal">{product.name}</ItemTitle>
+                    <ItemDescription className="flex flex-col gap-2">
+                        <span className="flex flex-wrap items-center gap-3">
                             <Button variant={"secondary"} onClick={() => onDec(product._id)}>
                                 {`-`}
                             </Button>
@@ -48,7 +48,7 @@ export const ProductItem = (
                         <span>{`Amount: $${(currentCartItem(product._id)?.userQuantity! * product.price).toFixed(2)}`}</span>
                     </ItemDescription>
                 </ItemContent>
-                <ItemActions>
+                <ItemActions className="w-full shrink-0 sm:w-auto sm:ml-auto">
                     <Button
                         className="bg-red-500 text-white"
                         variant="outline" size="sm"

@@ -15,17 +15,17 @@ export const FeaturedCard = (
 ) => {
 
     return (
-        <Card className="w-2/3 my-3">
+        <Card className="my-3 w-full max-w-4xl">
 
             <Link to={`/c/${category.slug}`}>
 
-                <CardHeader className="hover:bg-gray-50 p-3 m-2">
-                    <CardTitle className="text-xl">{category.name}</CardTitle>
+                <CardHeader className="m-2 p-3 hover:bg-gray-50">
+                    <CardTitle className="text-lg sm:text-xl">{category.name}</CardTitle>
                 </CardHeader>
 
             </Link>
 
-            <CardContent className="flex justify-between items-center">
+            <CardContent className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 justify-items-center">
                 {products?.map(p => <ProductCard key={p._id} product={p} />)}
             </CardContent>
 

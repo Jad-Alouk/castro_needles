@@ -140,10 +140,10 @@ export const AdminPage = () => {
     }
 
     return (
-        <div className="w-full flex flex-col justify-center items-center">
-            <Tabs defaultValue="createNew" className="w-1/2 flex justify-center items-center">
+        <div className="mx-auto flex w-full max-w-3xl flex-col items-center px-4 py-6 sm:px-6">
+            <Tabs defaultValue="createNew" className="flex w-full flex-col items-center">
 
-                <TabsList>
+                <TabsList className="grid w-full grid-cols-3">
                     <TabsTrigger value="createNew">Create New</TabsTrigger>
                     <TabsTrigger value="products">Products</TabsTrigger>
                     <TabsTrigger value="orders">Orders</TabsTrigger>
@@ -152,22 +152,22 @@ export const AdminPage = () => {
                 <TabsContent value="createNew" className="w-full">
                     <form
                         onSubmit={handleSubmit}
-                        className="flex flex-col justify-center items-center"
+                        className="flex w-full flex-col items-center"
                     >
                         <ProductForm preLoadedData={null} fileInputRef={fileInputRef} />
                     </form>
                 </TabsContent>
 
-                <TabsContent value="products" className="w-2/3">
+                <TabsContent value="products" className="w-full">
                     {allProds?.map(p => <ProductItem key={p._id} product={p} />)}
                 </TabsContent>
 
-                <TabsContent value="orders" className="w-2/3">
+                <TabsContent value="orders" className="w-full">
                     <form
                         onSubmit={authorizeOrder}
-                        className="my-5 flex flex-col justify-center items-center"
+                        className="my-5 flex w-full flex-col items-center"
                     >
-                        <FieldSet className="w-2/3">
+                        <FieldSet className="w-full">
                             <FieldGroup>
                                 <Field>
                                     <FieldLabel htmlFor="code">Order Code</FieldLabel>
@@ -181,15 +181,17 @@ export const AdminPage = () => {
 
                                 {
                                     order?.map(
-                                        ord => <div key={ord._id} className="flex justify-between items-center">
-                                            <Image src={ord.imageUrl} alt={ord.sku} size={"sm"} />
-                                            <span>{ord.name}</span>
-                                            <span>{ord.userQuantity}</span>
+                                        ord => <div key={ord._id} className="flex flex-col gap-2 border-b py-3 sm:flex-row sm:items-center sm:justify-between">
+                                            <div className="flex min-w-0 items-center gap-3">
+                                                <Image src={ord.imageUrl} alt={ord.sku} size={"sm"} />
+                                                <span className="truncate">{ord.name}</span>
+                                            </div>
+                                            <span className="shrink-0 text-muted-foreground">Qty: {ord.userQuantity}</span>
                                         </div>
                                     )
                                 }
 
-                                <Button>Authorize Order</Button>
+                                <Button className="w-full sm:w-auto">Authorize Order</Button>
                             </FieldGroup>
                         </FieldSet>
                     </form>

@@ -35,30 +35,30 @@ export const ProductPage = () => {
     }
 
     return (
-        <main className="mx-auto max-w-7xl px-4 py-8">
+        <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
 
-                <div className="md:col-span-1 flex items-start">
+                <div className="flex items-start md:col-span-1">
                     <img
-                        className="w-full rounded-lg object-cover"
+                        className="mx-auto w-full max-w-sm rounded-lg object-cover md:mx-0"
                         src={product?.imageUrl ?? placeholder}
                         alt={`${product?.sku ?? "product"}-img`}
                     />
                 </div>
 
-                <div className="md:col-span-2 flex flex-col gap-4">
+                <div className="flex flex-col gap-4 md:col-span-2">
 
-                    <h1 className="text-2xl font-heading font-semibold">{product?.name ?? "Product"}</h1>
-                    <div className="text-muted-foreground">SKU: {product?.sku ?? "—"}</div>
+                    <h1 className="text-xl font-heading font-semibold sm:text-2xl">{product?.name ?? "Product"}</h1>
+                    <div className="text-sm text-muted-foreground sm:text-base">SKU: {product?.sku ?? "—"}</div>
 
-                    <p className="text-base text-foreground/90">{product?.desc ?? "No description provided."}</p>
+                    <p className="text-sm text-foreground/90 sm:text-base">{product?.desc ?? "No description provided."}</p>
 
-                    <div className="flex items-center gap-4">
-                        <div className="text-2xl font-medium">${product?.price?.toFixed(2) ?? "0.00"}</div>
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                        <div className="text-xl font-medium sm:text-2xl">${product?.price?.toFixed(2) ?? "0.00"}</div>
                         <div className="text-sm text-muted-foreground">{product?.quantity ?? 0} in stock</div>
                     </div>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-3">
                         <Button variant={"secondary"} onClick={dec}>
                             {`-`}
                         </Button>
@@ -68,7 +68,7 @@ export const ProductPage = () => {
                         </Button>
                         {
                             product &&
-                            <Button onClick={() => addToCart(product, userQuantity)}>
+                            <Button className="w-full sm:w-auto" onClick={() => addToCart(product, userQuantity)}>
                                 Add to cart
                             </Button>
                         }
