@@ -317,22 +317,26 @@ export const authorizeOrder = mutation({
 
 })
 
-export const searchKeywords = query({
+export const searchKeyword = query({
 
     args: { searchTerm: v.string() },
 
     handler: async (ctx, { searchTerm }) => {
 
-        const formatted = searchTerm.trim().toLowerCase()
-        if (!formatted) return []
+        if (!searchTerm) return []
 
-        const products = await ctx.db.query("product").collect()
+        const formatted = searchTerm.toLowerCase()
+
+        const products = await ctx.db
+            .query("product")
+            .collect()
 
         return products
             .filter(p => {
-                const name = p.name?.toLowerCase() ?? ""
-                const sku = p.sku?.toLowerCase() ?? ""
-                return name.includes(formatted) || sku.includes(formatted)
+                const nameMatch = p.name.toLowerCase().includes(formatted)
+                const skuMatch = p.sku.toLowerCase().includes(formatted)
+
+                return nameMatch || skuMatch
             })
             .slice(0, 10)
     }
