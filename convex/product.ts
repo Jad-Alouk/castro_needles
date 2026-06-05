@@ -327,14 +327,14 @@ export const searchKeywords = query({
         if (!formatted) return []
 
         const products = await ctx.db.query("product").collect()
-
-        return products
-            .filter(p => {
-                const name = p.name?.toLowerCase() ?? ""
-                const sku = p.sku?.toLowerCase() ?? ""
-                return name.includes(formatted) || sku.includes(formatted)
-            })
-            .slice(0, 10)
+        return [formatted, products]
+        // return products
+        //     .filter(p => {
+        //         const name = p.name?.toLowerCase() ?? ""
+        //         const sku = p.sku?.toLowerCase() ?? ""
+        //         return name.includes(formatted) || sku.includes(formatted)
+        //     })
+        //     .slice(0, 10)
     }
 
 })
