@@ -333,7 +333,7 @@ export const searchKeywords = query({
 
         return products
             .filter(p => {
-                return p?.name?.toLowerCase().includes(formatted)
+                return p.name.toLowerCase().includes(formatted)
             })
             .slice(0, 10)
     }
