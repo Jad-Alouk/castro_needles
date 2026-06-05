@@ -12,9 +12,8 @@ export const Header = () => {
     const [search, setSearch] = useState("")
     const debouncedSearch = useDebounce(search, 200)
     const suggestions = useQuery(api.product.searchKeywords, { searchTerm: debouncedSearch })
-
-    console.log(suggestions)
-
+    const x = useQuery(api.product.collectAll, {})
+    console.log(x)
     return (
         <header className="w-full sticky top-0 z-50 border-b bg-background/70 backdrop-blur-sm">
             <div className="mx-auto max-w-7xl px-4 py-3 flex justify-between items-center gap-4 relative">
@@ -31,7 +30,7 @@ export const Header = () => {
                         value={search}
                     />
 
-                    {/* {debouncedSearch && (
+                    {debouncedSearch && (
                         <div className="absolute left-0 right-0 top-full mt-1 w-full bg-white border rounded-md shadow-lg max-h-60 overflow-y-auto z-50">
                             {suggestions === undefined ? (
                                 <div className="px-4 py-3 text-sm text-gray-500">Searching...</div>
@@ -59,7 +58,7 @@ export const Header = () => {
                                 </div>
                             )}
                         </div>
-                    )} */}
+                    )}
                 </div>
 
                 <Link to="/cart">
