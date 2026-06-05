@@ -323,11 +323,6 @@ export const searchKeywords = query({
 
     handler: async (ctx, { searchTerm }) => {
 
-        const userId = await getAuthUserId(ctx)
-        if (userId === null) {
-            return null
-        }
-
         if (!searchTerm) return []
 
         const formatted = searchTerm.toLowerCase()
