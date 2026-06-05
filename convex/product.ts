@@ -323,17 +323,16 @@ export const searchKeywords = query({
 
     handler: async (ctx, { searchTerm }) => {
 
-        if (!searchTerm) return []
+        const formatted = searchTerm.trim().toLowerCase()
+        if (!formatted) return []
 
-        const formatted = searchTerm.toLowerCase()
-
-        const products = await ctx.db
-            .query("product")
-            .take(100)
+        const products = await ctx.db.query("product").collect()
 
         return products
             .filter(p => {
-                return p.name.toLowerCase().includes(formatted)
+                const name = p.name?.toLowerCase() ?? ""
+                const sku = p.sku?.toLowerCase() ?? ""
+                return name.includes(formatted) || sku.includes(formatted)
             })
             .slice(0, 10)
     }

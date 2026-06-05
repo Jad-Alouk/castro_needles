@@ -11,7 +11,10 @@ export const Header = () => {
 
     const [search, setSearch] = useState("")
     const debouncedSearch = useDebounce(search, 200)
-    const suggestions = useQuery(api.product.searchKeywords, { searchTerm: debouncedSearch })
+    const suggestions = useQuery(
+        api.product.searchKeywords,
+        debouncedSearch.trim() ? { searchTerm: debouncedSearch } : "skip"
+    )
 
     return (
         <header className="w-full sticky top-0 z-50 border-b bg-background/70 backdrop-blur-sm">
@@ -47,6 +50,10 @@ export const Header = () => {
                                         </li>
                                     ))}
                                 </ul>
+                            ) : suggestions === null ? (
+                                <div className="px-4 py-3 text-sm text-gray-500">
+                                    Search is unavailable. Try again later.
+                                </div>
                             ) : (
                                 <div className="px-4 py-3 text-sm text-gray-500">
                                     No products found for "{debouncedSearch}"
