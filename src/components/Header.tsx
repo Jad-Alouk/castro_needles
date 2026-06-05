@@ -13,6 +13,10 @@ export const Header = () => {
     const debouncedSearch = useDebounce(search, 200)
     const suggestions = useQuery(api.product.searchKeywords, { searchTerm: debouncedSearch })
 
+    console.log("search", search)
+    console.log("debounce", debouncedSearch)
+    console.log("suggestions", suggestions)
+
     return (
         <header className="w-full sticky top-0 z-50 border-b bg-background/70 backdrop-blur-sm">
             <div className="mx-auto max-w-7xl px-4 py-3 flex justify-between items-center gap-4 relative">

@@ -330,8 +330,7 @@ export const searchKeywords = query({
         const products = await ctx.db
             .query("product")
             .take(100)
-        console.log(formatted)
-        console.log(products)
+
         return products
             .filter(p => {
                 return p?.name?.toLowerCase().includes(formatted)
