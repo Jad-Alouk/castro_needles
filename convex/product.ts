@@ -331,12 +331,13 @@ export const searchKeywords = query({
             .query("product")
             .take(100)
 
-        return products
-            .filter(p => {
-                const nameMatch = p?.name?.toLowerCase().includes(formatted)
-                return nameMatch
-            })
-            .slice(0, 10)
+        if (products.length) {
+            return products
+                .filter(p => {
+                    return p?.name?.toLowerCase().includes(formatted)
+                })
+                .slice(0, 10)
+        }
     }
 
 })
