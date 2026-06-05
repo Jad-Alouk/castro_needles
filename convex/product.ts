@@ -329,15 +329,13 @@ export const searchKeywords = query({
 
         const products = await ctx.db
             .query("product")
-            .take(100)
+            .collect()
 
-        if (products.length) {
-            return products
-                .filter(p => {
-                    return p?.name?.toLowerCase().includes(formatted)
-                })
-                .slice(0, 10)
-        }
+        return products
+            .filter(p => {
+                return p?.name?.toLowerCase().includes(formatted)
+            })
+            .slice(0, 10)
     }
 
 })
