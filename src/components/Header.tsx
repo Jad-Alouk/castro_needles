@@ -31,7 +31,7 @@ export const Header = () => {
 
                     {debouncedSearch && (
                         <div className="absolute left-0 right-0 top-full mt-1 w-full bg-white border rounded-md shadow-lg max-h-60 overflow-y-auto z-50">
-                            {suggestions === undefined ? (
+                            {!suggestions ? (
                                 <div className="px-4 py-3 text-sm text-gray-500">Searching...</div>
                             ) : Array.isArray(suggestions) && suggestions.length > 0 ? (
                                 <ul className="flex flex-col divide-y divide-gray-100">
@@ -42,7 +42,7 @@ export const Header = () => {
                                                 className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
                                                 onClick={() => setSearch("")}
                                             >
-                                                {s.name || "Unnamed Product"}
+                                                {s.name}
                                             </Link>
                                         </li>
                                     ))}
